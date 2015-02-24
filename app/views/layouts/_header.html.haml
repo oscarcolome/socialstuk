@@ -17,9 +17,9 @@
               =current_user.username
               %span.caret
             %ul.dropdown-menu{:role => "menu"}
-              %li{:role => "presentation"}=link_to 'Profile', edit_user_registration_path
+              %li{:role => "presentation"}=link_to 'Profile', user_path(current_user.username)
               %li{:role => "presentation"}=link_to 'Friends', '#'
-              %li{:role => "presentation"}=link_to 'Settings', '#'
+              %li{:role => "presentation"}=link_to 'Settings', edit_user_registration_path
               %li.divider
                 %li{:role => "presentation"}=link_to 'Logout', destroy_user_session_path, method: :delete
         -else

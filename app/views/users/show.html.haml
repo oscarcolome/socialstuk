@@ -1,0 +1,16 @@
+.jumbotron
+  .container
+    .row
+      .col-md-4
+        =gravatar_tag @user.email, size: 200
+      .col-md-4
+        %h3= @user.username
+        %p
+          Age:
+          = @user.age
+        %p
+          Gender:
+          =@user.gender
+      .col-md-4
+        %h3 Who am I?
+        %small= @user.bio
