@@ -10,7 +10,7 @@
       %ul.nav.navbar-nav.navbar-right
         -if current_user
           %li= link_to 'Timeline', '#'
-          %li= link_to 'People', '#'
+          %li= link_to 'People', users_path
           %li.dropdown
             %a.dropdown-toggle{"data-toggle" => "dropdown", :role => "button", "data-target" => "#"}
               =gravatar_tag current_user.email, size: 20
