@@ -24,7 +24,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to users_path(@post.user.username), notice: 'Post destroyed'
+    redirect_to user_path(@post.user.username), notice: 'Post destroyed'
   end
 
   private
