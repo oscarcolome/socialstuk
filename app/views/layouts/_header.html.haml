@@ -9,7 +9,7 @@
     .collapse.navbar-collapse
       %ul.nav.navbar-nav.navbar-right
         -if current_user
-          %li= link_to 'Timeline', '#'
+          %li= link_to 'Timeline', activities_path
           %li= link_to 'People', users_path
           %li.dropdown
             %a.dropdown-toggle{"data-toggle" => "dropdown", :role => "button", "data-target" => "#"}
