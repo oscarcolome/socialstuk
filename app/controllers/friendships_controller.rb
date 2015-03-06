@@ -16,6 +16,7 @@ class FriendshipsController < ApplicationController
   def accept
     @friendship.accept_friendship
     @friendship.create_activity(key: 'friendship.accepted', owner: @friendship.user, recipient: @friendship.friend)
+    @friendship.create_activity(key: 'friendship.accepted', owner: @friendship.friend, recipient: @friendship.user)
     redirect_to users_path, notice: 'Friendship accepted'
   end
 
