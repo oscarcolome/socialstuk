@@ -14,3 +14,23 @@
       .col-md-4
         %h3 Who am I?
         %small= @user.bio
+
+.container
+  .row
+    //Friend Zone
+    .col-md-3
+      .panel.panel-default
+        .panel-heading=" Friends (#{@user.active_friends.size})"
+        .panel-body
+          -@user.active_friends.each do |user|
+            =link_to user_path(user.username) do
+              =gravatar_tag user.email, size: 40
+            =user.username
+    //Post Zone
+    .col-md-6
+    //Profile Activity
+    .col-md-3
+      .panel.panel-default
+        .panel-heading Recent Activity
+        .panel-body
+          =render_activities(@activities)

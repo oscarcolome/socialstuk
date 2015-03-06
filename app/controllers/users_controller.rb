@@ -16,6 +16,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    @activities = PublicActivity::Activity.where(owner_id: @user.id) +
+        PublicActivity::Activity.where(recipient_id: @user.id)
   end
 
   private
