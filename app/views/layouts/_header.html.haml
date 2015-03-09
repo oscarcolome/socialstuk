@@ -10,7 +10,7 @@
       %ul.nav.navbar-nav.navbar-right
         -if current_user
           %li= link_to 'Timeline', activities_path
-          %li= link_to 'People', users_path
+          %li= link_to "People (#{request_count})", users_path
           %li.dropdown
             %a.dropdown-toggle{"data-toggle" => "dropdown", :role => "button", "data-target" => "#"}
               =gravatar_tag current_user.email, size: 20
@@ -18,7 +18,7 @@
               %span.caret
             %ul.dropdown-menu{:role => "menu"}
               %li{:role => "presentation"}=link_to 'Profile', user_path(current_user.username)
-              %li{:role => "presentation"}=link_to 'Friends', '#'
+              %li{:role => "presentation"}=link_to 'Friends', users_path(people: 'friends')
               %li{:role => "presentation"}=link_to 'Settings', edit_user_registration_path
               %li.divider
                 %li{:role => "presentation"}=link_to 'Logout', destroy_user_session_path, method: :delete

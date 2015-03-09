@@ -1,24 +1,32 @@
 .container
-  %h2
-    Edit #{resource_name.to_s.humanize}
-  = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-    = f.error_notification
-    .form-inputs
-      = f.input :username, required: true, autofocus: true
-      = f.input :age
-      = f.input :gender
-      = f.input :bio
+  .row
+    %h2 User Settings
+    = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'form-horizontal' }) do |f|
+      .col-md-5
+        = f.error_notification
+        .form-group
+          = f.input :username, required: true, autofocus: true, input_html: {class: 'form-control', width: 20}
+        .form-group
+          = f.input :age, input_html: {class: 'form-control'}
+          = f.input :gender, collection: %w(Male Female), input_html: {class: 'form-control'}
+          = f.input :bio, input_html: {class: 'form-control'}
 
-      = f.input :email, required: true
-      - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+          = f.input :email, required: true, input_html: {class: 'form-control'}
+          =link_to 'http://www.gravatar.com', target: '_blank' do
+            = gravatar_tag current_user.email, size: 100
+          %small Click here to change
+      .col-md-2
+      .col-md-5
+        - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+          %p
+            Currently waiting confirmation for: #{resource.unconfirmed_email}
+        .form-group
+          = f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false, input_html: {class: 'form-control'}
+          = f.input :password_confirmation, required: false, input_html: {class: 'form-control'}
+          = f.input :current_password, hint: "we need your current password to confirm your changes", required: true, input_html: {class: 'form-control'}
+        .form-group
+          = f.button :submit, "Update", class: 'btn btn-primary btn-block'
+        %h3 Cancel my account
         %p
-          Currently waiting confirmation for: #{resource.unconfirmed_email}
-      = f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false
-      = f.input :password_confirmation, required: false
-      = f.input :current_password, hint: "we need your current password to confirm your changes", required: true
-    .form-actions
-      = f.button :submit, "Update"
-  %h3 Cancel my account
-  %p
-    Unhappy? #{link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
-  = link_to "Back", :back
+          Unhappy? #{link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
+        = link_to "Back", :back

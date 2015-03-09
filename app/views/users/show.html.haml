@@ -28,7 +28,8 @@
             =user.username
     //Post Zone
     .col-md-6
-      =render 'posts/form'
+      -if current_user && current_user == @user
+        =render 'posts/form'
       =render @posts
     //Profile Activity
     .col-md-3

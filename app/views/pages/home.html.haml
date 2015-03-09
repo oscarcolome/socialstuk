@@ -1,2 +1,8 @@
-%h1 Pages#home
-%p Find me in app/views/pages/home.html.erb
+.landing
+  .container
+    .row.text-center
+      .jumbotron.front-title
+        %h1 Welcome to SocialStuk
+        %h3 A cool place for coders
+        =link_to 'Signup', new_user_registration_path, class: 'btn btn-primary btn-lg'
+
